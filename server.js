@@ -8,6 +8,7 @@ const bodyParser = require('body-parser');
 
 // Setup
 app.use(bodyParser.urlencoded({extended:true}));
+app.use(express.json())
 
 dotenv.config();
 // Routes
@@ -18,7 +19,6 @@ mongoose.connect(process.env.DB_CONNECT,
     ()=> console.log('Connected to DB')
 )
 // Middleware
-app.use(express.json())
 
 
 // listener

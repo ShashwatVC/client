@@ -2,7 +2,7 @@ POST  http://localhost:3000/register/ HTTP/1.1
 content-Type: application/json
 
 {
-    "name":"Mark Zuck",
+    "name":"Mawswswsw",
     "email":"MSVC@dkj.com",
-    "password":"lp123456"
+    "password":"lp16scvvdav"
 }
