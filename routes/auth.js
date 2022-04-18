@@ -1,5 +1,9 @@
 const router = require('express').Router()
+const verify = require('../middlewares/verifyToken')
+
 authRoutes = require('../controller/auth')
-router.post('/register',authRoutes.POSTRegister)
+router.get('/', verify ,authRoutes.GETIndex)
+router.post('/userRegister',authRoutes.POSTRegister)
+router.post('/login', authRoutes.POSTLogin)
 
 module.exports = router;

@@ -26,20 +26,3 @@ app.listen(3000, ()=> console.log('Server Up and Running'));
 
 
 
-// const path = require('path');
-// const bodyParser = require('body-parser');
-// const econtroller = require('./controllers/err');
-// const session = require('express-session');
-// const MongoDBStore = require('connect-mongodb-session')(session);
-// const csrf =  require('csurf');
-// const multer = require('multer');
-// const flash = require('connect-flash');
-
-// const MONGODB_URI = 'mongodb+srv://tester:Uadu84zhh0vkRFRf@cluster0.hg8rf.mongodb.net/bifrost?retryWrites=true&w=majority';
-
-// const app = express();
-// const profile = new MongoDBStore({
-//     uri: MONGODB_URI,
-//     collection: 'sessions',
-
-// });
