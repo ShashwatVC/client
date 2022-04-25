@@ -5,11 +5,16 @@ exports.POSTpacket = async(req,res,next)=>{
         const location = req.body.location
         const notification = req.body.location
         const userType = req.body.userType
+        const image = req.file;
+
+        
         console.log(req.body);
+        const imageUrl = image.path;
 
         const packet = new Packet({
             location : req.body.location,
             notification : req.body.location,
+            imagreUrl: imageUrl,
             userType : req.body.userType
         })
         try{

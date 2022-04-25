@@ -59,6 +59,8 @@ exports.POSTLogin  = async(req,res,next) => {
 
     }catch(err){
         console.log(err);
+        res.status(400).send(err);
+
     }
 }
 

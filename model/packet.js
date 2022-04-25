@@ -13,6 +13,10 @@ const packetSchema = new Schema({
         required : true,
         max : 255
     },
+    imageUrl:{
+        type: String,
+        required: true
+    },
     userType :{
         type: String,
         required: true,
