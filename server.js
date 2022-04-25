@@ -35,7 +35,7 @@ const filefilter = (req,file, cb) => {
 };
 
 // Setup
-// app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json())
 
 

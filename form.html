@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>HTML Forms</h2>
+
+<form action="http://localhost:3000/report" method="post" enctype="multipart/form-data">
+  <label for="location">location:</label><br>
+  <input type="text" id="location" name="location" ><br>
+  <label for="notifiction">notification:</label><br>
+  <input type="text" id="notification" name="notification" ><br><br>
+  <label for="email">file:</label><br>
+  <input type="file" id="image" name="image" ><br><br>
+  <label for="userType">userType:</label><br>
+  <input type="text" id="userType" name="userType" ><br><br>
+  <input type="submit" value="Submit">
+</form> 
+
+<p>If you click the "Submit" button, the form-data will be sent to a page called "/action_page.php".</p>
+
+</body>
+</html>

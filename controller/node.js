@@ -8,8 +8,9 @@ exports.POSTpacket = async(req,res,next)=>{
         const image = req.file;
 
         
-        console.log(req.body);
+        // console.log(req.body);
         const imageUrl = image.path;
+        console.log(image);
 
         const packet = new Packet({
             location : req.body.location,
