@@ -15,7 +15,7 @@ const packetSchema = new Schema({
     },
     imageUrl:{
         type: String,
-        required: true
+        required:true
     },
     userType :{
         type: String,

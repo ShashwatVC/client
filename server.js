@@ -2,12 +2,12 @@
 const express = require('express');
 const app = express();
 const path = require('path');
+const multer  = require('multer')
 
 const dotenv = require('dotenv')
 const router = require('./routes/auth');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const multer  = require('multer')
 
 dotenv.config();
 
@@ -22,7 +22,7 @@ const fileStorage = multer.diskStorage({
         cb(null,'images');
     },
     filename:(req,file,cb) => {
-        cb(null, file.originalname);
+        cb(null, file.filename +".jpg");
     }
 })
 const filefilter = (req,file, cb) => {
@@ -39,13 +39,13 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json())
 
 
+// integrating static file handeling and app
+app.use(multer({storage: fileStorage, filefilter: filefilter}).single('image'));
+app.use('/images',express.static(path.join(__dirname,'images')));
 
 // Routes
 app.use(router)
 
-// integrating static file handeling and app
-app.use(multer({storage: fileStorage, filefilter: filefilter}).single('image'));
-app.use('/images',express.static(path.join(__dirname,'images')));
 
 
 
