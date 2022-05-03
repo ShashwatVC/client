@@ -21,7 +21,12 @@ const packetSchema = new Schema({
         type: String,
         required: true,
         max: 100
-    }
+    },
+    userId: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
+      }
 })
 
 module.exports = mongoose.model('Packet',packetSchema)

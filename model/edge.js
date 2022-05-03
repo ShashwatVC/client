@@ -3,15 +3,17 @@ const mongoose = require('mongoose')
 
 const Schema =mongoose.Schema
 
-const authSchema = new Schema({
+const EdgeSchema = new Schema({
     name: {
         type: String,
         required: true,
         max:255,
         min:6
     },
-    email: {
+    ProdID: {
         type: String,
+        min:2,
+        max:2,
         required: true,
         
     },
@@ -33,7 +35,7 @@ const authSchema = new Schema({
     notifications:{
         packets : [
             {
-                alertID:{types: Schema.Types.ObjectId, ref:'Packet',required:true}
+                alertID:{types: Schema.Types.ObjectId, required: true}
             }
             
 
@@ -41,4 +43,4 @@ const authSchema = new Schema({
     }
 });
 
-module.exports = mongoose.model('User',authSchema)
+module.exports = mongoose.model('Edge', edgeSchema)

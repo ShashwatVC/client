@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken')
 const { join } = require('path')
 const {registerValidation,loginValidation} = require('../validation')
 const bcrypt = require('bcryptjs/dist/bcrypt')
-
+const Edge = require('../model/edge')
 exports.POSTRegister =  async(req,res,next)=>{
 
     try{
@@ -62,6 +62,41 @@ exports.POSTLogin  = async(req,res,next) => {
         res.status(400).send(err);
 
     }
+}
+exports.POSTedgeUserRegister =  async(req,res,next)=>{
+
+    try{
+
+        console.log(req.body);
+        
+
+        const userExist = await User.findOne({email:req.body.email})
+        if(userExist) return res.status(400).send('User Exist')
+        // Validating User Input
+        await edgeRegisterValidation(req.body)
+
+        const name = req.body.name;
+        const ProdID = req.body.ProdID;
+        const password = req.body.password;
+        //Hashing
+        const salt = await bcrypt.genSalt(10)
+        const hashedPassword = await bcrypt.hash(password,salt)
+
+        const edgeUser = new Edge({
+            name : name,
+            ProdID : ProdID,
+            password : hashedPassword,
+            userType:"EdgeUser"
+        })
+        try{
+            const savedUser = await edgeUser.save();
+            res.send(savedUser._id)
+        } catch(err){
+            res.status(400).send(err);
+        }
+    } catch(err){ 
+        return res.status(400).send(err.message)
+    }   
 }
 
 exports.GETIndex = (req,res,next) => {
