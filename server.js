@@ -8,6 +8,7 @@ const dotenv = require('dotenv')
 const router = require('./routes/auth');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const { Socket } = require('socket.io');
 
 dotenv.config();
 
@@ -22,7 +23,7 @@ const fileStorage = multer.diskStorage({
         cb(null,'images');
     },
     filename:(req,file,cb) => {
-        cb(null, file.filename +".jpg");
+        cb(null, file.originalname);
     }
 })
 const filefilter = (req,file, cb) => {
@@ -51,7 +52,11 @@ app.use(router)
 
 
 // listener
-app.listen(3000, ()=> console.log('Server Up and Running'));
+const server = app.listen(3000, ()=> console.log('Server Up and Running'));
+const io =  require('./socket').init(server);
+io.on('Connection',Socket=>[
+    console.log('Client_Conneced')
+])
 
 
 

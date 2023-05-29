@@ -1,0 +1,10 @@
+POST http://localhost:3000/userRegister/
+content-type:application/json 
+####
+
+{
+    "name":"User1",
+    "email":"user@mail.com",
+    "password":"123454",
+    "userType":"Admin"
+}

@@ -43,6 +43,7 @@ exports.POSTRegister =  async(req,res,next)=>{
 
 exports.POSTLogin  = async(req,res,next) => {
     try{
+        console.log(req.body);
         await loginValidation(req.body)
         const userExist = await User.findOne({email:req.body.email})
         if(!userExist) return res.status(400).send('Wrong email')
@@ -53,9 +54,13 @@ exports.POSTLogin  = async(req,res,next) => {
         const email = req.body.email;
         const password = req.body.password;
 
-        const token = jwt.sign({_id: userExist._id}, process.env.TOKEN_SECRET  )
+        const token = jwt.sign({_id: userExist._id}, process.env.TOKEN_SECRET)
         // res.status(200).send(token)
-        res.status(200).header('auth-token',token).send(token)
+        const jtoken = {"token":token}
+        res.status(200).header('auth-token',token).send(jtoken)
+
+
+        console.log(token);
 
     }catch(err){
         console.log(err);

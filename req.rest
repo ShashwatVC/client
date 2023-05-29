@@ -1,0 +1,37 @@
+POST http://localhost:3000/userRegister
+Content-Type: application/json
+
+{
+    "name": "Kyleor",
+    "email": "abc@g.com",
+    "password": "123456"
+}
+###
+
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+    "email": "abc@g.com",
+    "password":"123456"
+}
+
+###
+
+GET  http://6c80-43-230-198-50.ngrok-free.app
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDJjODBjNWVlZTZmNWQ0YTcxYjRmODMiLCJpYXQiOjE2ODA2MzkwMDl9.TXZ5JLZVIQDH9Ecp3opYXUlWaCsWmog5Mugu5SAkjRg
+
+
+###
+POST http://localhost:3000/report
+Content-Type: application/json
+
+{
+    "location":"Nregen",
+    "notification":"Dog in the park",
+    "userType":"Admin"
+}
+
+###
+
+GET http://localhost:3000/all

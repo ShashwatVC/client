@@ -13,15 +13,24 @@ const packetSchema = new Schema({
         required : true,
         max : 255
     },
-    imageUrl:{
-        type: String,
-        required:true
-    },
+    
     userType :{
         type: String,
         required: true,
         max: 100
-    }
+    },
+    imageUrl:{
+        type: String,
+        //required:true
+    },
+    date:{
+        type: Date,
+        default: Date.now,
+        timestamps:true
+
+
+    },
+
 })
 
 module.exports = mongoose.model('Packet',packetSchema)
